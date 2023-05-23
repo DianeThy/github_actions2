@@ -3,10 +3,9 @@
 name: render-Rmd
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '10 14 * * *'
   push:
-    paths:
-      - '**.Rmd'
+    paths: ['**.Rmd']
   workflow_dispatch:
 
 jobs:
@@ -18,7 +17,7 @@ jobs:
     steps:
       - name: Install curl package
         run: |
-          sudo apt-get install libcurl4-openssl-dev
+          sudo apt-get install -y libcurl4-openssl-dev
           
       - name: Checkout repo
         uses: actions/checkout@v2
