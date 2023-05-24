@@ -40,6 +40,9 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages("renv")'
+
+      - name: Restore renv
+        run: |
           R -e 'renv::restore()'
 
       - name: Render index.Rmd
