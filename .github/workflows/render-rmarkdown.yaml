@@ -37,7 +37,8 @@ jobs:
           key: r-${{ hashFiles('renv.lock') }}
           restore-keys: r-
 
-      - name: Install packages
+      - name: Cache install packages
+        uses: actions/cache@v2
         run: |
           R -e 'install.packages("renv")'
           R -e 'renv::restore()'
