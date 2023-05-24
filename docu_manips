@@ -1,3 +1,5 @@
+#--- Initialisation de la github action
+
 # Générer .yaml file (quand .Rmd créé)
 usethis::use_github_action("render-rmarkdown")
 
@@ -7,8 +9,8 @@ renv::init()
 library(tidyverse)
 renv::snapshot()
 
-# Aligner .yaml avec exemple : 
-    #https://github.com/bbest/gh-action-test-rmd/blob/main/.github/workflows/render-rmarkdown.yaml
+
+#--- Résolution de problèmes
 
 # Ajouter installation curl .yaml après steps:
       - name: Install curl package
@@ -18,3 +20,17 @@ renv::snapshot()
 # Accorder permission .git github-actions
     #https://github.com/ad-m/github-push-action/issues/96
     #Workflows permissions > Read and write > Save
+
+
+#--- Amélioration des workflows
+
+# Réduire le temps d'exécution (renv::restore() ~20 minutes)
+#1
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes #ajout cette ligne
+#2
+renv::restore(clean = TRUE) #jout clean = T
+      
+      
+      

@@ -41,12 +41,9 @@ jobs:
         run: |
           R -e 'install.packages("renv")'
           
-      - name: Restore Renv package cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.RENV_PATHS_ROOT }}
-          key: ${{ steps.get-version.outputs.os-version }}-${{ steps.get-version.outputs.r-version }}-${{ inputs.cache-version }}-${{ hashFiles('renv.lock') }}
-          restore-keys: ${{ steps.get-version.outputs.os-version }}-${{ steps.get-version.outputs.r-version }}-${{inputs.cache-version }}-
+      - name: Restore renv packages
+        run: |
+          R -e 'renv::restore(clean = TRUE)'
 
       - name: Render index.Rmd
         run: |
