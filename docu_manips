@@ -7,15 +7,11 @@ renv::init()
 library(tidyverse)
 renv::snapshot()
 
-# Régler problème du rlang version
-renv::snapshot()
-renv::restore(clean=T)
-renv::settings$snapshot.type("explicit")
-
-
 # Ajouter installation curl .yaml après steps:
       - name: Install curl package
         run: |
           sudo apt-get install -y libcurl4-openssl-dev
 
-
+# Accorder permission .git github-actions
+    #https://github.com/ad-m/github-push-action/issues/96
+    #Workflows permissions > Read and write > Save
