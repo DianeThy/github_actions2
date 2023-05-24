@@ -7,6 +7,9 @@ renv::init()
 library(tidyverse)
 renv::snapshot()
 
+# Aligner .yaml avec exemple : 
+    #https://github.com/bbest/gh-action-test-rmd/blob/main/.github/workflows/render-rmarkdown.yaml
+
 # Ajouter installation curl .yaml après steps:
       - name: Install curl package
         run: |
