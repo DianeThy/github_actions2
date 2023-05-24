@@ -1,0 +1,21 @@
+# Générer .yaml file (quand .Rmd créé)
+usethis::use_github_action("render-rmarkdown")
+
+# Générer renv.lock file
+library(renv)
+renv::init()
+library(tidyverse)
+renv::snapshot()
+
+# Régler problème du rlang version
+renv::snapshot()
+renv::restore(clean=T)
+renv::settings$snapshot.type("explicit")
+
+
+# Ajouter installation curl .yaml après steps:
+      - name: Install curl package
+        run: |
+          sudo apt-get install -y libcurl4-openssl-dev
+
+

@@ -3,7 +3,7 @@
 name: render-Rmd
 on:
   schedule:
-    - cron: '00 13 * * *'
+    - cron: '* 9-15 * * *'
   push:
     paths: ['**.Rmd']
   workflow_dispatch:
