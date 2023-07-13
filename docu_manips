@@ -19,7 +19,7 @@ renv::snapshot()
 
 # Accorder permission .git github-actions
     #https://github.com/ad-m/github-push-action/issues/96
-    #Workflows permissions > Read and write > Save
+    #Settings > Action > General > Workflows permissions > Read and write > Save
 
 
 #--- Amélioration des workflows
